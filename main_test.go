@@ -12,7 +12,7 @@ func TestFindSkillsToLearnCase1(t *testing.T) {
 	M := 4
 	skillID := 2
 	expected := []int{2, 1, 0}
-	actual, err := FindSkillsToLearn(T, A, M, skillID)
+	actual, err := FindSkillsToLearnSimple(T, A, M, skillID)
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
 	}

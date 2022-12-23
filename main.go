@@ -31,3 +31,19 @@ func FindSkillsToLearn(T []int, A []int, M int, skillID int) ([]int, error) {
 	}
 	return findSkillsToLearnRecursive(skillID), nil
 }
+
+func FindSkillsToLearnSimple(T []int, A []int, M int, skillID int) ([]int, error) {
+	skills := []int{}
+
+	// Loop through the parent skills until reaching the root skill (ID 0)
+	for id := skillID; id != 0; id = T[id] {
+		if id < 0 || id >= M {
+			// Return an empty list if the skill ID is out of range
+			return []int{}, fmt.Errorf("skill ID %d not found", id)
+		}
+		skills = append(skills, id)
+	}
+	skills = append(skills, 0) // Add the root skill (ID 0) to the list
+
+	return skills, nil
+}
